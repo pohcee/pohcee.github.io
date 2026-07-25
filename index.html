@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pohcee | Proofs of Concept Living & Evolving</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --panel-bg: #111625;
+            --accent-orange: #d46a37;
+            --accent-orange-glow: rgba(212, 106, 55, 0.15);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--accent-orange);
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Technical wireframe style icon area */
+        .logo-box {
+            width: 54px;
+            height: 54px;
+            border: 1.5px dashed var(--accent-orange);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: rgba(212, 106, 55, 0.03);
+        }
+
+        .logo-box::before {
+            content: "P";
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 1.75rem;
+            color: var(--accent-orange);
+            text-shadow: 0 0 8px var(--accent-orange-glow);
+        }
+
+        .logo-box::after {
+            content: "";
+            position: absolute;
+            width: 115%; height: 115%;
+            border-left: 0.5px solid rgba(212, 106, 55, 0.2);
+            border-top: 0.5px solid rgba(212, 106, 55, 0.2);
+            pointer-events: none;
+        }
+
+        .brand-name {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--text-main);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h1 span {
+            color: var(--accent-orange);
+        }
+
+        p.tagline {
+            font-size: 1.15rem;
+            line-height: 1.65;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        .terminal-box {
+            background: #070a13;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.25rem;
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-box span.prompt {
+            color: var(--accent-orange);
+            user-select: none;
+        }
+
+        .links-flex {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-orange);
+            color: #fff;
+            border: 1px solid var(--accent-orange);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: var(--text-muted);
+            transform: translateY(-1px);
+        }
+
+        footer {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 700px;
+            padding: 0 0.5rem;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo-area">
+            <div class="logo-box"></div>
+            <div class="brand-name">pohcee</div>
+        </div>
+
+        <h1>Where proofs of concept <span>live & evolve</span>.</h1>
+        
+        <p class="tagline">
+            We build tools and applications engineered for rapid iteration. Everything here starts out life to solve a real-world problem, moving quickly from raw ideas into production code shared openly to help others build faster.
+        </p>
+
+        <div class="terminal-box">
+            <span class="prompt">pohcee $</span>
+            <span>git clone https://github.com/pohcee/</span>
+        </div>
+
+        <div class="links-flex">
+            <a href="https://github.com/pohcee" class="btn btn-primary">Explore Repositories</a>
+            <a href="mailto:hi@pohcee.com" class="btn btn-secondary">Get in Touch</a>
+        </div>
+    </div>
+
+    <footer>
+        <div>&copy; 2026 pohcee. All rights reserved.</div>
+        <div><a href="https://github.com/pohcee">GitHub Organization</a></div>
+    </footer>
+
+</body>
+</html>
