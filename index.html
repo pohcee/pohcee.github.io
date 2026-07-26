@@ -62,7 +62,6 @@
             margin-bottom: 2.5rem;
         }
 
-        /* Technical wireframe style icon area */
         .logo-box {
             width: 54px;
             height: 54px;
@@ -131,11 +130,16 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            min-height: 54px;
         }
 
         .terminal-box span.prompt {
             color: var(--accent-orange);
             user-select: none;
+        }
+
+        #command-text {
+            transition: opacity 0.3s ease;
         }
 
         .links-flex {
@@ -214,9 +218,10 @@
             We build tools and applications engineered for rapid iteration. Everything here starts out life to solve a real-world problem, moving quickly from raw ideas into production code shared openly to help others build faster.
         </p>
 
+        <!-- Dynamic terminal executing actual repository commands -->
         <div class="terminal-box">
             <span class="prompt">pohcee $</span>
-            <span>git clone https://github.com/pohcee/</span>
+            <span id="command-text">git clone https://github.com/pohcee/dcmnorm.git</span>
         </div>
 
         <div class="links-flex">
@@ -230,5 +235,22 @@
         <div><a href="https://github.com/pohcee">GitHub Organization</a></div>
     </footer>
 
+    <script>
+        const commands = [
+            "git clone https://github.com/pohcee/dcmnorm.git",
+            "git clone https://github.com/pohcee/rport-scripts.git"
+        ];
+        let index = 0;
+        const target = document.getElementById("command-text");
+
+        setInterval(() => {
+            target.style.opacity = 0;
+            setTimeout(() => {
+                index = (index + 1) % commands.length;
+                target.innerText = commands[index];
+                target.style.opacity = 1;
+            }, 300);
+        }, 5000);
+    </script>
 </body>
 </html>
